@@ -3,9 +3,11 @@ package com.practica01.controller;
 import com.practica01.domain.Arbol;
 import com.practica01.service.ArbolService;
 import com.practica01.service.impl.FirebaseStorageServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,12 +31,19 @@ public class ArbolController {
 
     @GetMapping("/nuevo")
     public String arbolNuevo(Arbol arbol) {
-        return "/arbol/modifica";
+        return "arbol/modifica";
     }
 
     @PostMapping("/guardar")
-    public String arbolGuardar(Arbol arbol,
-            @RequestParam("imagenFile") MultipartFile imagenFile) {
+    public String arbolGuardar(
+            @Valid @ModelAttribute("arbol") Arbol arbol,
+            BindingResult result,
+            @RequestParam("imagenFile") MultipartFile imagenFile,
+            Model model) {
+
+        if (result.hasErrors()) {
+            return "arbol/modifica"; // Si hay errores de validación, vuelve al formulario
+        }
 
         if (!imagenFile.isEmpty()) {
             arbolService.save(arbol); // Guarda primero para generar el ID
@@ -55,6 +64,6 @@ public class ArbolController {
     public String arbolModificar(Arbol arbol, Model model) {
         arbol = arbolService.getArbol(arbol);
         model.addAttribute("arbol", arbol);
-        return "/arbol/modifica";
+        return "arbol/modifica";
     }
 }

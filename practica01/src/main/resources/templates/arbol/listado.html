@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Árboles</title>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <section class="container mt-4">
+            <h2>Listado de Árboles</h2>
+            <a class="btn btn-primary mb-3" th:href="@{/arbol/nuevo}">Agregar Árbol</a>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Común</th>
+                        <th>Descripción</th>
+                        <th>Dureza Madera</th>
+                        <th>Tipo Flor</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="arbol : ${arboles}">
+                        <td th:text="${arbol.id}">ID</td>
+                        <td th:text="${arbol.nombreComun}">Nombre</td>
+                        <td th:text="${arbol.descripcion}">Descripción</td>
+                        <td th:text="${arbol.durezaMadera}">Dureza</td>
+                        <td th:text="${arbol.tipoFlor}">Flor</td>
+                        <td>
+                            <a class="btn btn-warning btn-sm" th:href="@{/arbol/editar/{id}(id=${arbol.id})}">Editar</a>
+                            <a class="btn btn-danger btn-sm" th:href="@{/arbol/eliminar/{id}(id=${arbol.id})}">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+    </body>
+</html>
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Formulario Árbol</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <section class="container mt-4">
+            <h2>Formulario de Árbol</h2>
+
+            <form th:action="@{/arbol/guardar}" th:object="${arbol}" method="post" enctype="multipart/form-data">
+                <input type="hidden" th:field="*{id}"/>
+
+                <div class="mb-3">
+                    <label for="nombreComun" class="form-label">Nombre Común:</label>
+                    <input type="text" th:field="*{nombreComun}" class="form-control" id="nombreComun" required/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción:</label>
+                    <textarea th:field="*{descripcion}" class="form-control" id="descripcion"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="durezaMadera" class="form-label">Dureza de la Madera:</label>
+                    <input type="text" th:field="*{durezaMadera}" class="form-control" id="durezaMadera"/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="tipoFlor" class="form-label">Tipo de Flor:</label>
+                    <input type="text" th:field="*{tipoFlor}" class="form-control" id="tipoFlor"/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="activo" class="form-label">¿Activo?</label>
+                    <select th:field="*{activo}" class="form-select" id="activo" required>
+                        <option th:value="true">Sí</option>
+                        <option th:value="false">No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="imagenFile" class="form-label">Imagen del Árbol:</label>
+                    <input type="file" name="imagenFile" class="form-control" id="imagenFile"/>
+                </div>
+
+                <button type="submit" class="btn btn-success">Guardar</button>
+                <a th:href="@{/arbol/listado}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </section>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+    </body>
+</html>
