@@ -1,4 +1,4 @@
-package com.tienda.service;
+package com.practica01.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,7 +12,7 @@ public interface FirebaseStorageService {
     final String BucketName = "practica01-9fcbf.appspot.com";
 
     //Esta es la ruta básica de este proyecto Techshop
-    final String rutaSuperiorStorage = "techshop";
+    final String rutaSuperiorStorage = "practica01";
 
     //Ubicación donde se encuentra el archivo de configuración Json
     final String rutaJsonFile = "firebase";

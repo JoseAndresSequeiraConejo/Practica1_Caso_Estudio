@@ -24,7 +24,7 @@ public class ArbolController {
         var arboles = arbolService.getArboles(false);
         model.addAttribute("arboles", arboles);
         model.addAttribute("totalArboles", arboles.size());
-        return "/arbol/listado";
+        return "arbol/listado";
     }
 
     @GetMapping("/nuevo")

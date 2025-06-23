@@ -11,7 +11,7 @@ import com.google.cloud.storage.Storage.SignUrlOption;
 import com.google.cloud.storage.StorageOptions;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
-import com.tienda.service.FirebaseStorageService;
+import com.practica01.service.FirebaseStorageService;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -55,7 +55,7 @@ public class FirebaseStorageServiceImpl implements FirebaseStorageService {
                              String carpeta,
                              String fileName) throws IOException {
         //Se define el lugar y acceso al archivo imagen
-        ClassPathResource json = new ClassPathResource("firebase/techshop-21e43.json");
+        ClassPathResource json = new ClassPathResource("firebase/practica01-9fcbf.json");
         BlobId blobId = BlobId.of(BucketName, rutaSuperiorStorage + "/" + carpeta + "/" + fileName);
         BlobInfo blobInfo = BlobInfo.newBuilder(blobId)
                 .setContentType("image/jpg").build();
