@@ -30,7 +30,7 @@
                         <td th:text="${arbol.durezaMadera}">Dureza</td>
                         <td th:text="${arbol.tipoFlor}">Flor</td>
                         <td>
-                            <a class="btn btn-warning btn-sm" th:href="@{/arbol/editar/{id}(id=${arbol.id})}">Editar</a>
+                            <a class="btn btn-warning btn-sm" th:href="@{/arbol/modificar/{id}(id=${arbol.id})}">Editar</a>
                             <a class="btn btn-danger btn-sm" th:href="@{/arbol/eliminar/{id}(id=${arbol.id})}">Eliminar</a>
                         </td>
                     </tr>

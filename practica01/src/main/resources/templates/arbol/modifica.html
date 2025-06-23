@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <head th:replace="~{layout/plantilla :: head}">
         <title>Formulario Árbol</title>
         <meta charset="UTF-8"/>
     </head>
+    <script th:src="@{/js/rutinas.js}"></script>
+
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
 
@@ -43,8 +46,9 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="imagenFile" class="form-label">Imagen del Árbol:</label>
-                    <input type="file" name="imagenFile" class="form-control" id="imagenFile"/>
+                    <label for="imagen">Imagen Arbol</label>
+                    <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
+                    <img id="blah" src="#" alt="your image" height="200"/>
                 </div>
 
                 <button type="submit" class="btn btn-success">Guardar</button>

@@ -52,7 +52,7 @@
                                 <div class="mb-3">
                                     <label>[[#{arbol.imagen}]]</label>
                                     <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);" />
-                                    <img id="blah" src="#" alt="Imagen del árbol" height="180" />
+                                    <img id="blah" src="@{${arbol.rutaImagen}}" alt="Imagen del árbol" height="180" />
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -149,9 +149,9 @@
                                 <textarea class="form-control" th:field="*{descripcion}" required></textarea>
                             </div>
                             <div class="mb-3">
-                                <label>[[#{arbol.imagen}]]</label>
-                                <input type="file" class="form-control" name="imagenFile" onchange="readURL(this);" />
-                                <img id="blah" th:src="@{${arbol.rutaImagen}}" alt="Imagen del árbol" height="180" />
+                                <label for="imagen">Imagen Arbol</label>
+                                <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
+                                <img id="blah" src="#" alt="your image" height="200"/>
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
